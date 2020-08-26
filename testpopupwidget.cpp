@@ -17,15 +17,31 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
+#include <QListWidget>
+#include <QFile>
 
 TestPopupWidget::TestPopupWidget(QWidget *parent)
     : QWidget(parent)
 {
     QLabel *pLabel = new QLabel("This is a popup widget...", this);
-    QHBoxLayout *pMainLayout = new QHBoxLayout(this);
-    pLabel->setStyleSheet("QLabel { color: black; }");
+    QVBoxLayout *pMainLayout = new QVBoxLayout(this);
+   // pLabel->setStyleSheet("QLabel { color: black; }");
+
+    QFile file(":/qss/qss/scroll.qss");
+    file.open(QFile::ReadOnly);
+    QString style = tr(file.readAll());
+    //this->setStyleSheet(style);
+
+    QListWidget * list = new QListWidget();
+    for(int i = 0; i<50; i++)
+    {
+        QString item_str = "Item ->" + QString::number(i);
+        list->addItem(item_str);
+    }
+    list->setStyleSheet(style);
 
     pMainLayout->addWidget(pLabel);
+    pMainLayout->addWidget(list);
 }
 
 void TestPopupWidget::paintEvent(QPaintEvent *e)

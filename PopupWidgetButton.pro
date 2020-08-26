@@ -38,3 +38,6 @@ HEADERS += \
 
 FORMS += \
         mainwidget.ui
+
+RESOURCES += \
+    myQss.qrc

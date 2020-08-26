@@ -22,6 +22,15 @@ MainWidget::MainWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+    QFile file(":/qss/qss/my.qss");
+    file.open(QFile::ReadOnly);
+    QString style = tr(file.readAll());
+    this->setStyleSheet(style);
+
+
+
+
     PopupWidgetButton *pBtn = new PopupWidgetButton(PWB::Vertical, this, this);
     pBtn->move(100, 250);
     TestPopupWidget *pWidget = new TestPopupWidget(this);
