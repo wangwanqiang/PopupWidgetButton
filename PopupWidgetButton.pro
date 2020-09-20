@@ -28,13 +28,15 @@ SOURCES += \
         mainwidget.cpp \
     popupwidgetbutton.cpp \
     testpopupwidget.cpp \
-    shadowwidget.cpp
+    shadowwidget.cpp \
+    wslider.cpp
 
 HEADERS += \
         mainwidget.h \
     popupwidgetbutton.h \
     testpopupwidget.h \
-    shadowwidget.h
+    shadowwidget.h \
+    wslider.h
 
 FORMS += \
         mainwidget.ui

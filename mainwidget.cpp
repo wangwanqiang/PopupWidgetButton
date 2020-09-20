@@ -44,6 +44,27 @@ MainWidget::MainWidget(QWidget *parent) :
     pBtn1->button()->setText("Horizontal");
 }
 
+void MainWidget::mouseMoveEvent(QMouseEvent *event)
+{
+    qDebug()<<objectName()<<event->pos();
+
+    QList<WSlider*> list = findChildren<WSlider*>();
+    foreach (WSlider * aslider, list)
+    {
+        QPoint cur_pos = ui->widget->mapFromGlobal(QCursor::pos());
+        QRect rect = aslider->geometry();
+        if(rect.contains(cur_pos))
+        {
+            int cur_value = aslider->value();
+            aslider->setValue(++cur_value);
+            qDebug()<<"value changed!!"<<cur_value;
+        }
+    }
+    //QSlider::mouseMoveEvent(event);
+    //releaseMouse();
+
+}
+
 MainWidget::~MainWidget()
 {
     delete ui;
